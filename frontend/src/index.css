@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-dark-text font-sans antialiased selection:bg-brand selection:text-white;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d263b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e50914;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(22, 29, 48, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(22, 29, 48, 0.9);
+  border-color: rgba(229, 9, 20, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Neon glow effects */
+.neon-glow {
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+/* Card Flip Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Giant Number Stroke Effect */
+.stroke-text {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
+  color: transparent;
+}
+.group:hover .stroke-text {
+  -webkit-text-stroke: 2px #e50914;
+}
+
+/* Print Overlays */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-ticket, .printable-ticket * {
+    visibility: visible;
+  }
+  .printable-ticket {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 400px;
+    border: 2px dashed #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    padding: 24px !important;
+    border-radius: 12px;
+  }
+  .printable-ticket * {
+    color: #000 !important;
+  }
+  .printable-ticket .text-brand {
+    color: #e50914 !important;
+  }
+}
